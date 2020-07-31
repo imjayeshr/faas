@@ -26,6 +26,10 @@ exports.handler = function (event, context, callback) {
           Charset: "UTF-8",
           Data: link,
         },
+        Html: {
+          Charset: "UTF-8", 
+          Data: "Password Reset. Token: ${token} <a class=\"ulink\" href=\"" + link + "\" target=\"_blank\">Link:</a>."
+          }
       },
       Subject: {
         Charset: "UTF-8",
