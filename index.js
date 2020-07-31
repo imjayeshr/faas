@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 exports.handler = function (event, context, callback) {
   var token = uuidv4();
   var email = event.Records[0].Sns.Message;
-  var link = `Your password reset link is : http://prod.potterheadsbookstore.me/reset?email=${email}&token=${token}`;
+  var link = `http://prod.potterheadsbookstore.me/reset?email=${email}&token=${token}`;
 
   var currentTime = new Date().getTime();
   console.log("Current time is", currentTime);
@@ -28,7 +28,7 @@ exports.handler = function (event, context, callback) {
         },
         Html: {
           Charset: "UTF-8", 
-          Data: "Password Reset. Token: ${token} <a class=\"ulink\" href=\"" + link + "\" target=\"_blank\">Link:</a>."
+          Data: "Password Reset. Token:<a class=\"ulink\" href=\"" + link + "\" target=\"_blank\">Link:</a>."
           }
       },
       Subject: {
